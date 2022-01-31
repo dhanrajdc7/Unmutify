@@ -1,7 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.unmutify">
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
    <application
-        android:label="unmutify"
+        android:label="Unmutify"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
