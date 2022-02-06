@@ -3,6 +3,11 @@ import 'package:nb_utils/nb_utils.dart';
 
 class ControlButton extends StatelessWidget {
 
+  final String title;
+  final IconData icon;
+  final Color clr;
+  final Function onPressed;
+
   const ControlButton({
     Key? key,
     required this.title,
@@ -10,11 +15,6 @@ class ControlButton extends StatelessWidget {
     required this.clr,
     required this.onPressed
   }) : super(key: key);
-
-  final String title;
-  final IconData icon;
-  final Color clr;
-  final Function onPressed;
 
   @override
   Widget build(BuildContext context) {

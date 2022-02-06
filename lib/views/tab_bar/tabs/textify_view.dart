@@ -154,134 +154,136 @@ class _TextifyViewState extends State<TextifyView> {
         appBar: AppBar(title: Text("Text to Speech"), centerTitle: true,),
         body: Container(
           margin: EdgeInsets.all(16),
-          child: Column(
-            children: [
-               TextField(
-                 minLines: 5,
-                 maxLines: 10,
-                 controller: myController,
-                 decoration: InputDecoration(
-                   contentPadding: EdgeInsets.all(16),
-                   hintText: 'Type something here',
-                   border: OutlineInputBorder(
-                     borderRadius: BorderRadius.circular(12)
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                 TextField(
+                   minLines: 5,
+                   maxLines: 10,
+                   controller: myController,
+                   decoration: InputDecoration(
+                     contentPadding: EdgeInsets.all(16),
+                     hintText: 'Type something here',
+                     border: OutlineInputBorder(
+                       borderRadius: BorderRadius.circular(12)
+                     ),
+                     focusColor: Colors.blue
                    ),
-                   focusColor: Colors.blue
-                 ),
-                 cursorColor: Colors.blue,
-                 onChanged: (value) {
-                   setState(() {
-                     text = value;
-                     wordCount = text.trim().split(' ').length;
-                   });
-                 },
-               ).paddingSymmetric(vertical: 16, horizontal: 8),
-              SizedBox(height: 8,),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 8, horizontal: 4),
-                child: LinearPercentIndicator(
-                  lineHeight: 20.0,
-                  percent: currentValue,
-                  progressColor: Colors.blue[400],
-                  backgroundColor: Colors.grey[300],
-                  barRadius: Radius.circular(12),
+                   cursorColor: Colors.blue,
+                   onChanged: (value) {
+                     setState(() {
+                       text = value;
+                       wordCount = text.trim().split(' ').length;
+                     });
+                   },
+                 ).paddingSymmetric(vertical: 16, horizontal: 8),
+                SizedBox(height: 8,),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+                  child: LinearPercentIndicator(
+                    lineHeight: 20.0,
+                    percent: currentValue,
+                    progressColor: Colors.blue[400],
+                    backgroundColor: Colors.grey[300],
+                    barRadius: Radius.circular(12),
+                  ),
                 ),
-              ),
-              SizedBox(height: 8,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: ShakeWidget(
-                      key: playShakeKey,
-                      shakeCount: 3,
-                      shakeOffset: 5,
-                      shakeDuration: Duration(milliseconds: 500),
-                      child: ControlButton(
-                        title: "Play",
-                        icon: Mdi.play,
-                        clr: Colors.deepPurpleAccent.withOpacity(playerState == PlayerState.playing ? 0.7 : 1.0),
-                        onPressed: (){
-                          if (playerState != PlayerState.playing && text != '') {
-                            _speak();
-                          } else {
-                            playShakeKey.currentState?.shake();
-                          }
-                        },
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: ShakeWidget(
-                      key: pauseShakeKey,
-                      shakeCount: 3,
-                      shakeOffset: 5,
-                      shakeDuration: Duration(milliseconds: 500),
-                      child: ControlButton(
-                        title: "Pause",
-                        icon: Mdi.pause,
-                        clr: Colors.deepOrangeAccent.withOpacity(playerState != PlayerState.playing ? 0.7 : 1.0),
-                        onPressed: (){
-                          if (playerState == PlayerState.playing) {
-                            _pause();
-                          } else {
-                            pauseShakeKey.currentState?.shake();
-                          }
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: ShakeWidget(
-                      key: stopShakeKey,
-                      shakeCount: 3,
-                      shakeOffset: 5,
-                      shakeDuration: Duration(milliseconds: 500),
-                      child: ControlButton(
-                        title: "Stop",
-                        icon: Mdi.stop,
-                        clr: Colors.redAccent.withOpacity(playerState != PlayerState.playing ? 0.7 : 1.0),
-                        onPressed: (){
-                          if (playerState == PlayerState.playing) {
-                            _stop();
-                          } else {
-                            stopShakeKey.currentState?.shake();
-                          }
-                        },
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: ShakeWidget(
-                      key: clearShakeKey,
-                      shakeCount: 3,
-                      shakeOffset: 5,
-                      shakeDuration: Duration(milliseconds: 500),
-                      child: ControlButton(
-                        title: "Clear",
-                        icon: Mdi.close,
-                        clr: Colors.pinkAccent.withOpacity(text == '' ? 0.7 : 1.0),
-                        onPressed: (){
-                          setState(() {
-                            if (text != '') {
-                              myController.text = '';
-                              text = '';
+                SizedBox(height: 8,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: ShakeWidget(
+                        key: playShakeKey,
+                        shakeCount: 3,
+                        shakeOffset: 5,
+                        shakeDuration: Duration(milliseconds: 500),
+                        child: ControlButton(
+                          title: "Play",
+                          icon: Mdi.play,
+                          clr: Colors.deepPurpleAccent.withOpacity(playerState == PlayerState.playing ? 0.7 : 1.0),
+                          onPressed: (){
+                            if (playerState != PlayerState.playing && text != '') {
+                              _speak();
                             } else {
-                              clearShakeKey.currentState?.shake();
+                              playShakeKey.currentState?.shake();
                             }
-                          });
-                        },
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              )
-            ],
+                    Expanded(
+                      child: ShakeWidget(
+                        key: pauseShakeKey,
+                        shakeCount: 3,
+                        shakeOffset: 5,
+                        shakeDuration: Duration(milliseconds: 500),
+                        child: ControlButton(
+                          title: "Pause",
+                          icon: Mdi.pause,
+                          clr: Colors.deepOrangeAccent.withOpacity(playerState != PlayerState.playing ? 0.7 : 1.0),
+                          onPressed: (){
+                            if (playerState == PlayerState.playing) {
+                              _pause();
+                            } else {
+                              pauseShakeKey.currentState?.shake();
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: ShakeWidget(
+                        key: stopShakeKey,
+                        shakeCount: 3,
+                        shakeOffset: 5,
+                        shakeDuration: Duration(milliseconds: 500),
+                        child: ControlButton(
+                          title: "Stop",
+                          icon: Mdi.stop,
+                          clr: Colors.redAccent.withOpacity(playerState != PlayerState.playing ? 0.7 : 1.0),
+                          onPressed: (){
+                            if (playerState == PlayerState.playing) {
+                              _stop();
+                            } else {
+                              stopShakeKey.currentState?.shake();
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: ShakeWidget(
+                        key: clearShakeKey,
+                        shakeCount: 3,
+                        shakeOffset: 5,
+                        shakeDuration: Duration(milliseconds: 500),
+                        child: ControlButton(
+                          title: "Clear",
+                          icon: Mdi.close,
+                          clr: Colors.pinkAccent.withOpacity(text == '' ? 0.7 : 1.0),
+                          onPressed: (){
+                            setState(() {
+                              if (text != '') {
+                                myController.text = '';
+                                text = '';
+                              } else {
+                                clearShakeKey.currentState?.shake();
+                              }
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
