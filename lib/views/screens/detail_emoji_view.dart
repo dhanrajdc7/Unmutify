@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:unmutify/emojis/category.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:unmutify/utils/player_state.dart';
 import 'package:unmutify/views/cells/emoji_cell.dart';
 
 class DetailEmojiView extends StatefulWidget {
@@ -17,6 +19,87 @@ class DetailEmojiView extends StatefulWidget {
 }
 
 class _DetailEmojiViewState extends State<DetailEmojiView> {
+
+  /// Text to Speech
+  final flutterTts = FlutterTts();
+  final String defaultLanguage = 'en-US';
+
+  dynamic languages;
+  late String language;
+
+  double volume = 0.5;
+  double pitch = 1.0;
+  double rate = 0.5;
+
+  /// Player State
+  PlayerState playerState = PlayerState.stopped;
+
+  @override
+  void initState() {
+    super.initState();
+    initTts();
+  }
+
+  @override
+  void dispose() {
+    flutterTts.stop();
+    super.dispose();
+  }
+
+  void initTts() {
+    /// Start
+    flutterTts.setStartHandler(() {
+      setState(() {
+        playerState = PlayerState.playing;
+      });
+    });
+
+    flutterTts.setCompletionHandler(() {
+      setState(() {
+        playerState = PlayerState.stopped;
+        hideSnakbar();
+      });
+    });
+
+    flutterTts.setErrorHandler((err) {
+      setState(() {
+        print("error occurred: " + err);
+        showSnakbar("Something went wrong");
+        playerState = PlayerState.stopped;
+        hideSnakbar();
+      });
+    });
+  }
+
+  Future _speak(String txt) async {
+    await flutterTts.setVolume(volume);
+    await flutterTts.setSpeechRate(rate);
+    await flutterTts.setPitch(pitch);
+
+    if (txt.isNotEmpty) {
+      var result = await flutterTts.speak(txt);
+    }
+  }
+
+  void showSnakbar(String msg) {
+    var snackBar = SnackBar(
+      content: Text(
+        msg,
+        textAlign: TextAlign.center,
+      ),
+      behavior: SnackBarBehavior.floating,
+      elevation: 10,
+      backgroundColor: Colors.deepPurpleAccent,
+      onVisible: (){
+        _speak(msg);
+      },
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  void hideSnakbar() {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +134,17 @@ class _DetailEmojiViewState extends State<DetailEmojiView> {
                               mainAxisSpacing: 8
                           ),
                           itemBuilder: (context, index) {
-                            return EmojiCell(emoji: sub.items[index]);
+                            var emoji = sub.items[index];
+                            return EmojiCell(
+                                emoji: emoji
+                            ).onTap((){
+                              if (playerState != PlayerState.playing) {
+                                showSnakbar(emoji.info);
+                              }
+                            });
                           }
-                      )
+                      ),
+                      SizedBox(height: 16,)
                     ],
                   ),
                 );

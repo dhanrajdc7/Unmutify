@@ -10,7 +10,8 @@ var allCategories = [
   greetingsCategory,
   reactionsCategory,
   instructionsCategory,
-  timingsCategory
+  timingsCategory,
+  consumablesCategory
 ];
 
 /// NUMBERS
@@ -70,11 +71,11 @@ var commonCategory = Category(
                 Emoji(emo: "🙋", info: "Me"),
                 Emoji(emo: "☺️", info: "You are welcome"),
                 Emoji(emo: "🙌", info: "Yup"),
-                Emoji(emo: "👏", info: "Congrats"),
+                Emoji(emo: "👏", info: "Congrats!"),
                 Emoji(emo: "✌️", info: "Bye"),
                 Emoji(emo: "🤟", info: "Love you"),
                 Emoji(emo: "👌", info: "Nice"),
-                Emoji(emo: "❔", info: "How are you"),
+                Emoji(emo: "❔", info: "How are you?"),
               ]
           )
     ]
@@ -268,9 +269,19 @@ var consumablesCategory = Category(
   icon: Mdi.foodAppleOutline,
   items: [
     SubCategory(
-        name: "Food",
+        name: "Prepared Foods & Meals",
         items: [
-
+          Emoji(emo: "🍞", info: "Bread"),
+          Emoji(emo: "🥞", info: "Pancakes"),
+          Emoji(emo: "🕐", info: "One O Clock"),
+          Emoji(emo: "🕜", info: "One Thirty"),
+          Emoji(emo: "🕑", info: "Two O Clock"),
+          Emoji(emo: "🕝", info: "Two Thirty"),
+          Emoji(emo: "🕒", info: "Three O Clock"),
+          Emoji(emo: "🕞", info: "Three Thirty"),
+          Emoji(emo: "🕓", info: "Four O Clock"),
+          Emoji(emo: "🕟", info: "Four Thirty"),
+          Emoji(emo: "🕔", info: "Five O Clock"),
         ]
     )
   ]
