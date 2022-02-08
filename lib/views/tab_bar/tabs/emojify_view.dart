@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 import 'package:unmutify/views/cells/category_cell.dart';
 import 'package:unmutify/emojis/emojis.dart' as emojis;
+import 'package:nb_utils/nb_utils.dart';
 
 class EmojifyView extends StatefulWidget {
   const EmojifyView({Key? key}) : super(key: key);
@@ -22,19 +23,16 @@ class _EmojifyViewState extends State<EmojifyView> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(title: Text("Emoji To Speech"),),
-        body: Container(
-          padding: EdgeInsets.all(16),
-          child: GridView.builder(
-              itemCount: allSections.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: (orientation == Orientation.portrait ? 2 : 4),
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 8
-              ),
-              itemBuilder: (context, index) {
-                return CategoryCell(category: allSections[index],);
-              }
-          )
+        body: GridView.builder(
+            itemCount: allSections.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: (orientation == Orientation.portrait ? 2 : 4),
+                crossAxisSpacing: 8,
+                mainAxisSpacing: 8
+            ),
+            itemBuilder: (context, index) {
+              return CategoryCell(category: allSections[index],);
+            }
         ),
       ),
     );

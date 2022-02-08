@@ -41,7 +41,6 @@ class _DrawifyViewState extends State<DrawifyView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Draw"),),
       body: Stack(
         children: [
           buildAllPaths(context),

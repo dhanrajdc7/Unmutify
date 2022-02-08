@@ -21,5 +21,6 @@ class ThemeProvider extends ChangeNotifier {
 
   void getTheme() async {
     themeMode = await themePreferences.getTheme();
+    notifyListeners();
   }
 }

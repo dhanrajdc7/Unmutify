@@ -4,7 +4,9 @@ import 'package:mdi/mdi.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:provider/provider.dart';
 import 'package:unmutify/utils/player_state.dart';
+import 'package:unmutify/utils/themes/theme_provider.dart';
 import 'package:unmutify/views/buttons/control_button.dart';
 import 'package:unmutify/views/widgets/shake_widget.dart';
 
@@ -151,7 +153,7 @@ class _TextifyViewState extends State<TextifyView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: Text("Text to Speech"), centerTitle: true,),
+        appBar: AppBar(title: Text("Text to Speech")),
         body: Container(
           margin: EdgeInsets.all(16),
           child: SingleChildScrollView(
@@ -167,7 +169,7 @@ class _TextifyViewState extends State<TextifyView> {
                      border: OutlineInputBorder(
                        borderRadius: BorderRadius.circular(12)
                      ),
-                     focusColor: Colors.blue
+                     focusColor: Colors.blue,
                    ),
                    cursorColor: Colors.blue,
                    onChanged: (value) {
@@ -184,7 +186,7 @@ class _TextifyViewState extends State<TextifyView> {
                     lineHeight: 20.0,
                     percent: currentValue,
                     progressColor: Colors.blue[400],
-                    backgroundColor: Colors.grey[300],
+                    backgroundColor: Provider.of<ThemeProvider>(context).themeMode == ThemeMode.dark ? Colors.grey.shade800 : Colors.grey.shade300,
                     barRadius: Radius.circular(12),
                   ),
                 ),

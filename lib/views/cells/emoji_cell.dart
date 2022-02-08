@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:unmutify/emojis/emoji.dart';
+import 'package:unmutify/utils/themes/theme_provider.dart';
 
 class EmojiCell extends StatefulWidget {
 
@@ -21,7 +23,7 @@ class _EmojiCellState extends State<EmojiCell> {
       margin: EdgeInsets.all(16),
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: Provider.of<ThemeProvider>(context).themeMode == ThemeMode.dark ? Colors.black : Colors.white,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(color: Colors.black12),
           boxShadow: [

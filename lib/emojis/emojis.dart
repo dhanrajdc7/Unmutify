@@ -273,15 +273,15 @@ var consumablesCategory = Category(
         items: [
           Emoji(emo: "🍞", info: "Bread"),
           Emoji(emo: "🥞", info: "Pancakes"),
-          Emoji(emo: "🕐", info: "One O Clock"),
-          Emoji(emo: "🕜", info: "One Thirty"),
-          Emoji(emo: "🕑", info: "Two O Clock"),
-          Emoji(emo: "🕝", info: "Two Thirty"),
-          Emoji(emo: "🕒", info: "Three O Clock"),
-          Emoji(emo: "🕞", info: "Three Thirty"),
-          Emoji(emo: "🕓", info: "Four O Clock"),
-          Emoji(emo: "🕟", info: "Four Thirty"),
-          Emoji(emo: "🕔", info: "Five O Clock"),
+          Emoji(emo: "", info: "One O Clock"),
+          Emoji(emo: "", info: "One Thirty"),
+          Emoji(emo: "", info: "Two O Clock"),
+          Emoji(emo: "", info: "Two Thirty"),
+          Emoji(emo: "", info: "Three O Clock"),
+          Emoji(emo: "", info: "Three Thirty"),
+          Emoji(emo: "", info: "Four O Clock"),
+          Emoji(emo: "", info: "Four Thirty"),
+          Emoji(emo: "", info: "Five O Clock"),
         ]
     )
   ]
