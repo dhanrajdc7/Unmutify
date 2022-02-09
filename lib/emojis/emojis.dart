@@ -61,21 +61,42 @@ var commonCategory = Category(
     icon: Mdi.messageReplyText,
     items: [
           SubCategory(
-              name: "Feeling",
+              name: "Messages",
               items: [
-                Emoji(emo: "👋", info: "Hi"),
-                Emoji(emo: "👍", info: "Yes"),
-                Emoji(emo: "🙅", info: "No"),
-                Emoji(emo: "🙆", info: "Ok"),
-                Emoji(emo: "🙏", info: "Thank you"),
-                Emoji(emo: "🙋", info: "Me"),
-                Emoji(emo: "☺️", info: "You are welcome"),
-                Emoji(emo: "🙌", info: "Yup"),
-                Emoji(emo: "👏", info: "Congrats!"),
-                Emoji(emo: "✌️", info: "Bye"),
-                Emoji(emo: "🤟", info: "Love you"),
-                Emoji(emo: "👌", info: "Nice"),
-                Emoji(emo: "❔", info: "How are you?"),
+                    Emoji(emo: "👋", info: "Hi"),
+                    Emoji(emo: "✌️", info: "Bye"),
+                    Emoji(emo: "🙏", info: "Thank you"),
+                    Emoji(emo: "☺️", info: "You are welcome"),
+                    Emoji(emo: "👏", info: "Congrats!"),
+              ]
+          ),
+          SubCategory(
+              name: "Questions",
+              items: [
+                    Emoji(emo: "❔", info: "How are you?"),
+                    Emoji(emo: "❓", info: "How is it going?"),
+                    Emoji(emo: "⁉️", info: "Are you ok?"),
+                    Emoji(emo: "❔", info: "How are you?"),
+                    Emoji(emo: "🆙", info: "What's up?"),
+              ]
+          ),
+          SubCategory(
+              name: "Responses",
+              items: [
+                    Emoji(emo: "👍", info: "Yes"),
+                    Emoji(emo: "🙅", info: "No"),
+                    Emoji(emo: "🙆", info: "Ok"),
+                    Emoji(emo: "🙋", info: "Me"),
+                    Emoji(emo: "☺️", info: "You are welcome"),
+                    Emoji(emo: "🙌", info: "Yup"),
+                    Emoji(emo: "✌️", info: "Bye"),
+                    Emoji(emo: "🤟", info: "Love you"),
+                    Emoji(emo: "👌", info: "Nice"),
+                    Emoji(emo: "🆒", info: "Cool"),
+                    Emoji(emo: "✅", info: "Right"),
+                    Emoji(emo: "❌", info: "Wrong"),
+                    Emoji(emo: "🔺", info: "I Agree"),
+                    Emoji(emo: "🔻", info: "I Disagree"),
               ]
           )
     ]
@@ -89,13 +110,13 @@ var greetingsCategory = Category(
           SubCategory(
               name: "Time",
               items: [
-                Emoji(emo: "☀️", info: "Good Morning"),
-                Emoji(emo: "🌙", info: "Good Night"),
-                Emoji(emo: "⛅️", info: "Good Afternoon"),
-                Emoji(emo: "🌆", info: "Good Evening"),
-                Emoji(emo: "✨", info: "Have a nice day"),
-                Emoji(emo: "🤔", info: "How are you"),
-                Emoji(emo: "🤗", info: "Hope you are doing well"),
+                    Emoji(emo: "☀️", info: "Good Morning"),
+                    Emoji(emo: "🌙", info: "Good Night"),
+                    Emoji(emo: "⛅️", info: "Good Afternoon"),
+                    Emoji(emo: "🌆", info: "Good Evening"),
+                    Emoji(emo: "✨", info: "Have a nice day"),
+                    Emoji(emo: "🤔", info: "How are you"),
+                    Emoji(emo: "🤗", info: "Hope you are doing well"),
               ]
           )
     ]
@@ -106,30 +127,98 @@ var reactionsCategory = Category(
     name: "Reactions",
     icon: Mdi.react,
     items: [
-          SubCategory(
-              name: "Happy",
-              items: [
-                Emoji(emo: "🤗", info: "Thank you so much"),
-                Emoji(emo: "🤝", info: "Nice to meet you"),
-                Emoji(emo: "🤯", info: "Mind Blowing"),
-                Emoji(emo: "😱", info: "Oh My God"),
-                Emoji(emo: "🥳", info: "Congratulations"),
-                Emoji(emo: "😆", info: "LOL"),
-                Emoji(emo: "🧐", info: "What is this"),
-                Emoji(emo: "🤩", info: "Awesome"),
-                Emoji(emo: "👻", info: "Surprise"),
-                Emoji(emo: "🤷", info: "I don't know"),
-              ]
-          ),
-          SubCategory(
-              name: "Sad",
-              items: [
-                Emoji(emo: "😵", info: "Oh no"),
-                Emoji(emo: "☹️", info: "Really sad"),
-                Emoji(emo: "😮", info: "Ohh"),
-                Emoji(emo: "🤒", info: "Not feeling well"),
-              ]
-          )
+      SubCategory(
+          name: "Happy",
+          items: [
+            Emoji(emo: "🤗", info: "Thank you so much"),
+            Emoji(emo: "🤝", info: "Nice to meet you"),
+            Emoji(emo: "🤯", info: "Mind Blowing"),
+            Emoji(emo: "🥳", info: "Congratulations"),
+            Emoji(emo: "😆", info: "LOL"),
+            Emoji(emo: "😂", info: "Hilarious"),
+            Emoji(emo: "🤣", info: "Laughing Hard"),
+            Emoji(emo: "🙃", info: "Sarcasm"),
+            Emoji(emo: "🧐", info: "What is this"),
+            Emoji(emo: "🤩", info: "Awesome"),
+            Emoji(emo: "💯", info: "Hundred Percent"),
+            Emoji(emo: "😍", info: "Loving It"),
+            Emoji(emo: "😘", info: "Love you"),
+            Emoji(emo: "😋", info: "Delicious"),
+            Emoji(emo: "😎", info: "Awesome"),
+            Emoji(emo: "😌", info: "Thank God"),
+            Emoji(emo: "👻", info: "Surprise"),
+            Emoji(emo: "😲", info: "Ohh"),
+            Emoji(emo: "🙇", info: "Bow"),
+            Emoji(emo: "🙌", info: "High Five"),
+            Emoji(emo: "🙆", info: "Ok"),
+            Emoji(emo: "🤔", info: "Thinking"),
+            Emoji(emo: "🧐", info: "What is this?"),
+            Emoji(emo: "🤷", info: "I don't know"),
+            Emoji(emo: "🥵", info: "Hot"),
+            Emoji(emo: "🥶", info: "Cold"),
+          ]
+      ),
+      SubCategory(
+          name: "Sad",
+          items: [
+            Emoji(emo: "😭", info: "Crying"),
+            Emoji(emo: "😵", info: "Oh no"),
+            Emoji(emo: "☹️", info: "Really sad"),
+            Emoji(emo: "😮", info: "Ohh"),
+            Emoji(emo: "🤒", info: "Not feeling well"),
+            Emoji(emo: "🤕", info: "Injured"),
+            Emoji(emo: "🤢", info: "Nauseated"),
+            Emoji(emo: "🤮", info: "Vomiting"),
+            Emoji(emo: "🤧", info: "Sneezing"),
+            Emoji(emo: "😕", info: "Confused"),
+            Emoji(emo: "🥴", info: "Woozy"),
+            Emoji(emo: "😵", info: "Knocked Out"),
+            Emoji(emo: "😪", info: "Tired"),
+            Emoji(emo: "😶", info: "Speechless"),
+            Emoji(emo: "😥", info: "Upset"),
+            Emoji(emo: "😢", info: "Miss You"),
+            Emoji(emo: "😫", info: "Tired, need a break"),
+            Emoji(emo: "🤦", info: "Oh No"),
+            Emoji(emo: "🥱", info: "Bored"),
+          ]
+      ),
+      SubCategory(
+          name: "Emotions",
+          items: [
+            Emoji(emo: "❤️", info: "I love you"),
+            Emoji(emo: "💌", info: "Love Letter"),
+            Emoji(emo: "💘", info: "In Relationship"),
+            Emoji(emo: "💝️", info: "Love Gift"),
+            Emoji(emo: "💖", info: "Falling in Love"),
+            Emoji(emo: "💗", info: "Love you so much"),
+            Emoji(emo: "❣️", info: "I very much agree on this"),
+            Emoji(emo: "💔", info: "Breakup"),
+          ]
+      ),
+      SubCategory(
+          name: "Fear",
+          items: [
+            Emoji(emo: "😱", info: "Oh My God"),
+            Emoji(emo: "😬️", info: "Awkward"),
+            Emoji(emo: "😖", info: "Terrible"),
+            Emoji(emo: "😨", info: "Fearful"),
+            Emoji(emo: "😰", info: "Anxious"),
+            Emoji(emo: "🤫", info: "Keep Quiet"),
+            Emoji(emo: "😮‍💨", info: "Thank God"),
+          ]
+      ),
+      SubCategory(
+          name: "Angry",
+          items: [
+            Emoji(emo: "😒", info: "Annoying"),
+            Emoji(emo: "️😤", info: "Frustrating"),
+            Emoji(emo: "😠", info: "Angry"),
+            Emoji(emo: "😡", info: "Extremely Angry"),
+            Emoji(emo: "🤐", info: "Shut Up"),
+            Emoji(emo: "🤯", info: "Head Exploding"),
+            Emoji(emo: "💢", info: "I'm Angry"),
+          ]
+      ),
     ]
 );
 
@@ -263,7 +352,7 @@ var timingsCategory = Category(
     ]
 );
 
-
+/// Consumables
 var consumablesCategory = Category(
   name: "Consumables",
   icon: Mdi.foodAppleOutline,
@@ -273,16 +362,109 @@ var consumablesCategory = Category(
         items: [
           Emoji(emo: "🍞", info: "Bread"),
           Emoji(emo: "🥞", info: "Pancakes"),
-          Emoji(emo: "", info: "One O Clock"),
-          Emoji(emo: "", info: "One Thirty"),
-          Emoji(emo: "", info: "Two O Clock"),
-          Emoji(emo: "", info: "Two Thirty"),
-          Emoji(emo: "", info: "Three O Clock"),
-          Emoji(emo: "", info: "Three Thirty"),
-          Emoji(emo: "", info: "Four O Clock"),
-          Emoji(emo: "", info: "Four Thirty"),
-          Emoji(emo: "", info: "Five O Clock"),
+          Emoji(emo: "🧀", info: "Cheese"),
+          Emoji(emo: "🍗", info: "Chicken Leg"),
+          Emoji(emo: "🥩", info: "Meat"),
+          Emoji(emo: "🍔", info: "Hamburger"),
+          Emoji(emo: "🍟", info: "French Fries"),
+          Emoji(emo: "🍕", info: "Pizza"),
+          Emoji(emo: "🌭", info: "Hot Dog"),
+          Emoji(emo: "🥪", info: "Sandwich"),
+          Emoji(emo: "🥚", info: "Egg"),
+          Emoji(emo: "🍳", info: "Omelet"),
+          Emoji(emo: "🥗", info: "Salad"),
+          Emoji(emo: "🍿", info: "Popcorn"),
+          Emoji(emo: "🧈", info: "Butter"),
+          Emoji(emo: "🍙", info: "Rice Ball"),
+          Emoji(emo: "🍚", info: "Cooked Rice"),
+          Emoji(emo: "🍣", info: "Sushi"),
+          Emoji(emo: "🧂", info: "Salt"),
+          Emoji(emo: "🥚", info: "Egg"),
         ]
-    )
+    ),
+    SubCategory(
+        name: "Fruits",
+        items: [
+          Emoji(emo: "🍇", info: "Grapes"),
+          Emoji(emo: "🍈", info: "Melon"),
+          Emoji(emo: "🍉", info: "Watermelon"),
+          Emoji(emo: "🍊", info: "Orange"),
+          Emoji(emo: "🍋", info: "Lemon"),
+          Emoji(emo: "🍌", info: "Banana"),
+          Emoji(emo: "🍍", info: "Pineapple"),
+          Emoji(emo: "🥭", info: "Mango"),
+          Emoji(emo: "🍎", info: "Red Apple"),
+          Emoji(emo: "🍏", info: "Green Apple"),
+          Emoji(emo: "🍐", info: "Pear"),
+          Emoji(emo: "🍑", info: "Peach"),
+          Emoji(emo: "🍒", info: "Cherries"),
+          Emoji(emo: "🍓", info: "Strawberry"),
+          Emoji(emo: "🫐", info: "Blueberries"),
+          Emoji(emo: "🥝", info: "Kiwi"),
+          Emoji(emo: "🍅", info: "Tomato"),
+          Emoji(emo: "🥥", info: "Coconut"),
+        ]
+    ),
+    SubCategory(
+        name: "Vegetables",
+        items: [
+          Emoji(emo: "🥑", info: "Avocado"),
+          Emoji(emo: "🍆", info: "Eggplant"),
+          Emoji(emo: "🥔", info: "Potato"),
+          Emoji(emo: "🥕", info: "Carrot"),
+          Emoji(emo: "🌽", info: "Corn"),
+          Emoji(emo: "🌶️", info: "Hot Pepper"),
+          Emoji(emo: "🫑", info: "Bell Pepper"),
+          Emoji(emo: "🥒", info: "Cucumber"),
+          Emoji(emo: "🥬", info: "Leafy Green"),
+          Emoji(emo: "🥦", info: "Broccoli"),
+          Emoji(emo: "🧄", info: "Garlic"),
+          Emoji(emo: "🧅", info: "Onion"),
+          Emoji(emo: "🍄", info: "Mushroom"),
+          Emoji(emo: "🥜", info: "Peanuts"),
+          Emoji(emo: "🌰", info: "Chestnut"),
+        ]
+    ),
+    SubCategory(
+        name: "Sweets",
+        items: [
+          Emoji(emo: "🍦", info: "Soft Ice Cream"),
+          Emoji(emo: "🍧", info: "Shaved Ice"),
+          Emoji(emo: "🍨", info: "Ice Cream"),
+          Emoji(emo: "🍩", info: "Doughnut"),
+          Emoji(emo: "🍪", info: "Cookie"),
+          Emoji(emo: "🎂️", info: "Birthday Cake"),
+          Emoji(emo: "🍰", info: "Short Cake"),
+          Emoji(emo: "🧁", info: "Cup Cake"),
+          Emoji(emo: "🥧", info: "Pie"),
+          Emoji(emo: "🍫", info: "Chocolate Bar"),
+          Emoji(emo: "🍬", info: "Candy"),
+          Emoji(emo: "🍭", info: "Lollipop"),
+          Emoji(emo: "🍮", info: "Custard"),
+          Emoji(emo: "🍯", info: "Honey Pot"),
+        ]
+    ),
+    SubCategory(
+        name: "Drinks",
+        items: [
+          Emoji(emo: "🍼", info: "Baby Bottle"),
+          Emoji(emo: "🥛", info: "Glass of Milk"),
+          Emoji(emo: "☕", info: "Coffee"),
+          Emoji(emo: "🫖", info: "Teapot"),
+          Emoji(emo: "🍵", info: "Tea"),
+          Emoji(emo: "️🍾", info: "Green Bottle of champagne"),
+          Emoji(emo: "🍷", info: "Wine Glass"),
+          Emoji(emo: "🍸", info: "Cocktail Glass"),
+          Emoji(emo: "🍹", info: "Tropical Drink"),
+          Emoji(emo: "🍺", info: "Beer Mug"),
+          Emoji(emo: "🥂", info: "Clinking Glasses"),
+          Emoji(emo: "🥃", info: "Tumbler Glass"),
+          Emoji(emo: "🥤", info: "Cup with Straw"),
+          Emoji(emo: "🧋", info: "Bubble Tea"),
+          Emoji(emo: "🧃", info: "Beverage Box"),
+          Emoji(emo: "🧉", info: "Mate"),
+          Emoji(emo: "🧊", info: "Ice"),
+        ]
+    ),
   ]
 );
