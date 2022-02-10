@@ -352,7 +352,7 @@ var timingsCategory = Category(
     ]
 );
 
-/// Consumables
+/// CONSUMABLES
 var consumablesCategory = Category(
   name: "Consumables",
   icon: Mdi.foodAppleOutline,
@@ -467,4 +467,402 @@ var consumablesCategory = Category(
         ]
     ),
   ]
+);
+
+/// NATURE
+var natureCategory = Category(
+    name: "Nature",
+    icon: Mdi.flower,
+    items: [
+      SubCategory(
+          name: "Weather",
+          items: [
+            Emoji(emo: "🌷", info: "Spring"),
+            Emoji(emo: "☀️", info: "Summer"),
+            Emoji(emo: "☔", info: "Monsoon"),
+            Emoji(emo: "⛄", info: "Winter"),
+          ]
+      ),
+      SubCategory(
+          name: "Mammals",
+          items: [
+            Emoji(emo: "🐒", info: "Monkey"),
+            Emoji(emo: "🦍️", info: "Gorilla"),
+            Emoji(emo: "🐶", info: "Dog"),
+            Emoji(emo: "🐺", info: "Wolf"),
+            Emoji(emo: "🦊", info: "Fox"),
+            Emoji(emo: "🐱️", info: "Cat"),
+            Emoji(emo: "🦁", info: "Lion"),
+            Emoji(emo: "🐯", info: "Tiger"),
+            Emoji(emo: "🐴", info: "Horse"),
+            Emoji(emo: "🦄️", info: "Unicorn"),
+            Emoji(emo: "🐮", info: "Cow"),
+            Emoji(emo: "🐷", info: "Pig"),
+            Emoji(emo: "🐗", info: "Boar"),
+            Emoji(emo: "🐭", info: "Mouse"),
+            Emoji(emo: "🐿️", info: "Chipmunk"),
+            Emoji(emo: "🐻", info: "Bear"),
+            Emoji(emo: "🐼", info: "Panda"),
+            Emoji(emo: "🦘", info: "Kangaroo"),
+          ]
+      ),
+      SubCategory(
+          name: "Birds",
+          items: [
+            Emoji(emo: "🐔", info: "Chicken"),
+            Emoji(emo: "🐓️", info: "Rooster"),
+            Emoji(emo: "🐥", info: "Baby Chick"),
+            Emoji(emo: "🐦", info: "Bird"),
+            Emoji(emo: "🐧", info: "Penguin"),
+            Emoji(emo: "🕊️️", info: "Dove"),
+            Emoji(emo: "🦅", info: "Eagle"),
+            Emoji(emo: "🦆", info: "Duck"),
+            Emoji(emo: "🦢", info: "Swan"),
+            Emoji(emo: "🦉️", info: "Owl"),
+            Emoji(emo: "🦤", info: "Dodo"),
+            Emoji(emo: "🪶", info: "Feather"),
+            Emoji(emo: "🦩", info: "Flamingo"),
+            Emoji(emo: "🦚", info: "Peacock"),
+            Emoji(emo: "️🦜", info: "Parrot"),
+          ]
+      ),
+      SubCategory(
+          name: "Amphibians",
+          items: [
+            Emoji(emo: "🐸", info: "Frog"),
+            Emoji(emo: "️🐊", info: "Crocodile"),
+            Emoji(emo: "🐢", info: "Turtle"),
+            Emoji(emo: "🦎", info: "Lizard"),
+            Emoji(emo: "🐍", info: "Snake"),
+            Emoji(emo: "🐉️️", info: "Dragon"),
+            Emoji(emo: "🦕", info: "Sauropod"),
+            Emoji(emo: "🦖", info: "Dinosaur"),
+          ]
+      ),
+      SubCategory(
+          name: "Marine",
+          items: [
+            Emoji(emo: "🐳", info: "Whale"),
+            Emoji(emo: "️🐬", info: "Dolphin"),
+            Emoji(emo: "🦭", info: "Seal"),
+            Emoji(emo: "🐟", info: "Fish"),
+            Emoji(emo: "🐡", info: "Blowfish"),
+            Emoji(emo: "🦈", info: "Shark"),
+            Emoji(emo: "🐙", info: "Octopus"),
+            Emoji(emo: "🐚", info: "Spiral Shell"),
+          ]
+      ),
+      SubCategory(
+          name: "Small Animals",
+          items: [
+            Emoji(emo: "🐌", info: "Snail"),
+            Emoji(emo: "🦋️", info: "Butterfly"),
+            Emoji(emo: "🐛", info: "Bug"),
+            Emoji(emo: "🐜", info: "Ant"),
+            Emoji(emo: "🐝", info: "Honeybee"),
+            Emoji(emo: "🪲", info: "Beetle"),
+            Emoji(emo: "🦗", info: "Cricket"),
+            Emoji(emo: "🪳", info: "Cockroach"),
+            Emoji(emo: "🕷️", info: "Spider"),
+            Emoji(emo: "🕸️", info: "Spider Web"),
+            Emoji(emo: "🦂", info: "Scorpion"),
+            Emoji(emo: "🦟", info: "Mosquito"),
+            Emoji(emo: "🪰", info: "Fly"),
+            Emoji(emo: "🪱", info: "Worm"),
+            Emoji(emo: "🦠", info: "Microbe"),
+          ]
+      ),
+      SubCategory(
+          name: "Flowers",
+          items: [
+            Emoji(emo: "💐", info: "Bouquet"),
+            Emoji(emo: "🌸️", info: "Cherry Blossom"),
+            Emoji(emo: "🏵️", info: "Rosette"),
+            Emoji(emo: "🌹", info: "Rose"),
+            Emoji(emo: "🥀", info: "Wilted Flower"),
+            Emoji(emo: "🌺", info: "Hibiscus"),
+            Emoji(emo: "🌻", info: "Sunflower"),
+            Emoji(emo: "🌼", info: "Blossom"),
+            Emoji(emo: "🌷️", info: "Tulip"),
+          ]
+      ),
+      SubCategory(
+          name: "Plants",
+          items: [
+            Emoji(emo: "🌱", info: "Seedling"),
+            Emoji(emo: "🪴", info: "Potted Plant"),
+            Emoji(emo: "🌲", info: "Evergreen Tree"),
+            Emoji(emo: "🌳", info: "Deciduous Tree"),
+            Emoji(emo: "🌴", info: "Palm Tree"),
+            Emoji(emo: "🌵", info: "Cactus"),
+            Emoji(emo: "🌾", info: "Sheaf Of Rice"),
+            Emoji(emo: "🌿", info: "Herb"),
+            Emoji(emo: "☘️️", info: "Shamrock"),
+            Emoji(emo: "🍀", info: "Clover"),
+            Emoji(emo: "🍁", info: "Maple Leaf"),
+          ]
+      ),
+    ]
+);
+
+/// PEOPLE
+var peopleCategory = Category(
+    name: "People",
+    icon: Mdi.accountGroup,
+    items: [
+      SubCategory(
+          name: "Gender",
+          items: [
+            Emoji(emo: "👨", info: "Male"),
+            Emoji(emo: "👩", info: "Female"),
+            Emoji(emo: "🏳‍🌈", info: "LGBT"),
+          ]
+      ),
+      SubCategory(
+          name: "Persons",
+          items: [
+            Emoji(emo: "👶", info: "Baby"),
+            Emoji(emo: "🧒", info: "Child"),
+            Emoji(emo: "👦", info: "Boy"),
+            Emoji(emo: "👧", info: "Girl"),
+            Emoji(emo: "🧑", info: "Person"),
+            Emoji(emo: "👨", info: "Man"),
+            Emoji(emo: "👩", info: "Women"),
+            Emoji(emo: "👪", info: "Family"),
+          ]
+      ),
+      SubCategory(
+          name: "Professions",
+          items: [
+            Emoji(emo: "⚕️️️", info: "Doctor"),
+            Emoji(emo: "🧑‍🎓", info: "Student"),
+            Emoji(emo: "🧑‍🏫", info: "Teacher"),
+            Emoji(emo: "⚖️", info: "Judge"),
+            Emoji(emo: "🧑‍🌾", info: "Farmer"),
+            Emoji(emo: "🧑‍🍳", info: "Cook"),
+            Emoji(emo: "🧑‍🔧", info: "Mechanic"),
+            Emoji(emo: "🧑‍🏭", info: "Factory Worker"),
+            Emoji(emo: "🧑‍💼", info: "Office Worker"),
+            Emoji(emo: "🧑‍🔬", info: "Scientist"),
+            Emoji(emo: "🧑‍💻", info: "Technologiest"),
+            Emoji(emo: "🧑‍🎤", info: "Singer"),
+            Emoji(emo: "🧑‍🎨", info: "Artist"),
+            Emoji(emo: "✈️", info: "Pilot"),
+            Emoji(emo: "🧑‍🚀", info: "Astronaut"),
+            Emoji(emo: "🧑‍🚒", info: "Firefighter"),
+            Emoji(emo: "👮", info: "Police Officer"),
+            Emoji(emo: "🕵️", info: "Detective"),
+            Emoji(emo: "💂", info: "Guard"),
+            Emoji(emo: "🥷", info: "Ninja"),
+            Emoji(emo: "👷", info: "Construction Worker"),
+            Emoji(emo: "🤴", info: "Prince"),
+            Emoji(emo: "👸", info: "Princess"),
+            Emoji(emo: "🥷", info: "Ninja"),
+            Emoji(emo: "👷", info: "Construction Worker"),
+          ]
+      ),
+      SubCategory(
+          name: "Body Parts",
+          items: [
+            Emoji(emo: "️️️💪", info: "Flexed Biceps"),
+            Emoji(emo: "🦵", info: "Leg"),
+            Emoji(emo: "🦶", info: "Foot"),
+            Emoji(emo: "👂", info: "Ear"),
+            Emoji(emo: "🦻", info: "Ear with Hearing Aid"),
+            Emoji(emo: "👃", info: "Nose"),
+            Emoji(emo: "🧠", info: "Brain"),
+            Emoji(emo: "🫀", info: "Heart"),
+            Emoji(emo: "🫁", info: "Lungs"),
+            Emoji(emo: "🦷", info: "Tooth"),
+            Emoji(emo: "🦴", info: "Bone"),
+            Emoji(emo: "👁️", info: "Eye"),
+            Emoji(emo: "👀", info: "Eyes"),
+            Emoji(emo: "👅️", info: "Tongue"),
+            Emoji(emo: "👄", info: "Mouth"),
+
+          ]
+      ),
+      SubCategory(
+          name: "Body Parts",
+          items: [
+            Emoji(emo: "️️️💪", info: "Flexed Biceps"),
+            Emoji(emo: "🦵", info: "Leg"),
+            Emoji(emo: "🦶", info: "Foot"),
+            Emoji(emo: "👂", info: "Ear"),
+            Emoji(emo: "🦻", info: "Ear with Hearing Aid"),
+            Emoji(emo: "👃", info: "Nose"),
+            Emoji(emo: "🧠", info: "Brain"),
+            Emoji(emo: "🫀", info: "Heart"),
+            Emoji(emo: "🫁", info: "Lungs"),
+            Emoji(emo: "🦷", info: "Tooth"),
+            Emoji(emo: "🦴", info: "Bone"),
+            Emoji(emo: "👁️", info: "Eye"),
+            Emoji(emo: "👀", info: "Eyes"),
+            Emoji(emo: "👅️", info: "Tongue"),
+            Emoji(emo: "👄", info: "Mouth"),
+            Emoji(emo: "🏻", info: "Light Skin Tone"),
+            Emoji(emo: "🏼", info: "Medium Light Skin Tone"),
+            Emoji(emo: "🏽", info: "Medium Skin Tone"),
+            Emoji(emo: "🏾", info: "Medium Dark Skin Tone"),
+            Emoji(emo: "🏿", info: "Dark Skin Tone"),
+          ]
+      ),
+    ]
+);
+
+/// ACTIVITIES
+var activitiesCategory = Category(
+    name: "Activities",
+    icon: Mdi.gamepadVariantOutline,
+    items: [
+      SubCategory(
+          name: "Actions",
+          items: [
+            Emoji(emo: "💆", info: "Massage"),
+            Emoji(emo: "💇", info: "Haircut"),
+            Emoji(emo: "🚶️", info: "Walk"),
+            Emoji(emo: "🧍", info: "Stand"),
+            Emoji(emo: "🧎", info: "Kneel"),
+            Emoji(emo: "️🏃", info: "Run"),
+            Emoji(emo: "🕺", info: "Dance"),
+            Emoji(emo: "🧗️", info: "Climb"),
+          ]
+      ),
+      SubCategory(
+          name: "Sportive",
+          items: [
+            Emoji(emo: "🤺", info: "Fencing"),
+            Emoji(emo: "🏇", info: "Horse Riding"),
+            Emoji(emo: "⛷️️", info: "Skier"),
+            Emoji(emo: "🏂", info: "Snowboarding"),
+            Emoji(emo: "🏌️", info: "Golfing"),
+            Emoji(emo: "️🏄", info: "Person Surfing"),
+            Emoji(emo: "🚣", info: "Boating"),
+            Emoji(emo: "🏊️", info: "Swimming"),
+            Emoji(emo: "⛹️", info: "Basketball"),
+            Emoji(emo: "🏋️️", info: "Weight Lifting"),
+            Emoji(emo: "🚴", info: "Biking"),
+            Emoji(emo: "️🚵", info: "Mountain Biking"),
+            Emoji(emo: "🤸", info: "Cartwheeling"),
+            Emoji(emo: "🤼️", info: "Wrestling"),
+            Emoji(emo: "🤽", info: "Water Polo"),
+            Emoji(emo: "🤾️", info: "Handball"),
+            Emoji(emo: "🤹", info: "Juggling"),
+          ]
+      ),
+      SubCategory(
+          name: "Events",
+          items: [
+            Emoji(emo: "🪔", info: "Diwali"),
+            Emoji(emo: "🎄", info: "Christmas"),
+            Emoji(emo: "🎃", info: "Halloween"),
+            Emoji(emo: "☪️", info: "Ramadan"),
+            Emoji(emo: "🎂", info: "Birthday"),
+            Emoji(emo: "️💒", info: "Wedding"),
+            Emoji(emo: "💃", info: "Party"),
+          ]
+      ),
+      SubCategory(
+          name: "Games",
+          items: [
+            Emoji(emo: "🎯", info: "Bullseye"),
+            Emoji(emo: "🪀", info: "Yo Yo"),
+            Emoji(emo: "🪁", info: "Kite"),
+            Emoji(emo: "🎱", info: "Pool 8 Ball"),
+            Emoji(emo: "🔮", info: "Crystal Ball"),
+            Emoji(emo: "️🪄", info: "Magic Wand"),
+            Emoji(emo: "🧿", info: "Nazar Amulet"),
+            Emoji(emo: "🎮", info: "Video Game"),
+            Emoji(emo: "️🕹️", info: "Joystick"),
+            Emoji(emo: "🎲", info: "Dice"),
+            Emoji(emo: "🧩️", info: "Puzzle"),
+            Emoji(emo: "♟️", info: "Chess"),
+            Emoji(emo: "️🃏", info: "Card Suit"),
+          ]
+      ),
+    ]
+);
+
+/// OBJECTS
+var objectsCategory = Category(
+    name: "Objects",
+    icon: Mdi.viewGridOutline,
+    items: [
+      SubCategory(
+          name: "Tools",
+          items: [
+            Emoji(emo: "🔨", info: "Hammer"),
+            Emoji(emo: "🪓️", info: "Axe"),
+            Emoji(emo: "⛏️", info: "Pick"),
+            Emoji(emo: "🗡️️", info: "Dagger"),
+            Emoji(emo: "⚔️", info: "Swords"),
+            Emoji(emo: "🪃️", info: "Boomerang"),
+            Emoji(emo: "🛡️", info: "Shield"),
+            Emoji(emo: "🪚️", info: "Saw"),
+            Emoji(emo: "🔧", info: "Wrench"),
+            Emoji(emo: "️🪛", info: "Screwdriver"),
+            Emoji(emo: "🔩", info: "Nut Bolt"),
+            Emoji(emo: "️⚙️", info: "Gear"),
+            Emoji(emo: "🗜️", info: "Clamp"),
+            Emoji(emo: "⚖️️", info: "Balance Scale"),
+            Emoji(emo: "🔗", info: "Link"),
+            Emoji(emo: "⛓️️", info: "Chain"),
+            Emoji(emo: "🪝", info: "Hook"),
+            Emoji(emo: "🧰️", info: "Toolbox"),
+            Emoji(emo: "🧲", info: "Magnet"),
+            Emoji(emo: "🪜️", info: "Ladder"),
+          ]
+      ),
+      SubCategory(
+          name: "Kitchen",
+          items: [
+            Emoji(emo: "🥢", info: "Chopsticks"),
+            Emoji(emo: "️🍽️", info: "Fork And Knife With Plate"),
+            Emoji(emo: "🍴", info: "Fork And Knife"),
+            Emoji(emo: "️🥄", info: "Spoon"),
+            Emoji(emo: "🔪", info: "Kitchen Knife"),
+            Emoji(emo: "️🏺", info: "Amphora"),
+          ]
+      ),
+      SubCategory(
+          name: "Wearables",
+          items: [
+            Emoji(emo: "👓", info: "Glasses"),
+            Emoji(emo: "🕶️", info: "Sunglasses"),
+            Emoji(emo: "🥼", info: "Lab Coat"),
+            Emoji(emo: "🦺", info: "Safety Vest"),
+            Emoji(emo: "️", info: "Pilot"),
+            Emoji(emo: "", info: "Artist"),
+            Emoji(emo: "️", info: "Pilot"),
+            Emoji(emo: "", info: "Artist"),
+            Emoji(emo: "️", info: "Pilot"),
+            Emoji(emo: "", info: "Artist"),
+            Emoji(emo: "️", info: "Pilot"),
+          ]
+      ),
+      SubCategory(
+          name: "Office",
+          items: [
+            Emoji(emo: "👨", info: "Male"),
+            Emoji(emo: "👩", info: "Female"),
+            Emoji(emo: "🏳‍🌈", info: "LGBT"),
+          ]
+      ),
+      SubCategory(
+          name: "Household",
+          items: [
+            Emoji(emo: "👨", info: "Male"),
+            Emoji(emo: "👩", info: "Female"),
+            Emoji(emo: "🏳‍🌈", info: "LGBT"),
+          ]
+      ),
+      SubCategory(
+          name: "Sports",
+          items: [
+            Emoji(emo: "👨", info: "Male"),
+            Emoji(emo: "👩", info: "Female"),
+            Emoji(emo: "🏳‍🌈", info: "LGBT"),
+          ]
+      ),
+    ]
 );
