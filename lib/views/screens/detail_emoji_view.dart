@@ -86,6 +86,11 @@ class _DetailEmojiViewState extends State<DetailEmojiView> {
       content: Text(
         msg,
         textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+          fontWeight: FontWeight.w600
+        ),
       ),
       behavior: SnackBarBehavior.floating,
       elevation: 10,
