@@ -1,4 +1,4 @@
-![logo](https://user-images.githubusercontent.com/39642060/138568047-a08785c8-ccdb-4afd-8d23-839bd8716156.png)
+![appCard](https://user-images.githubusercontent.com/39642060/153726700-7151969a-2fb9-4fd2-bcbb-8ce2c876fcd8.png)
 
 # Unmutify
 Helping mute people to talk
