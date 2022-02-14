@@ -8,6 +8,7 @@ import 'package:unmutify/utils/themes/theme_provider.dart';
 import 'package:unmutify/views/cells/settings_cell.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:unmutify/views/screens/about_view.dart';
+import 'package:unmutify/views/screens/features_view.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:mailto/mailto.dart';
 
@@ -44,7 +45,7 @@ class _SettingsViewState extends State<SettingsView> {
                         title: 'Features',
                         rightObj: Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 20,),
                       ).onTap(() {
-
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => FeaturesView()),);
                       }),
                       SettingsCell(
                         iconData: Icons.dark_mode,
@@ -165,7 +166,7 @@ class _SettingsViewState extends State<SettingsView> {
   }
 
   void tweetApp() {
-    const txt = "Hey! I am using @MyMeets to manage all important meetings in one place. Download Now: ";
+    const txt = "Hey! I am using @Unmutify to manage all important meetings in one place. Download Now: $appPortfolio";
     //_launchURL(twUrl);
   }
 

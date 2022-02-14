@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Feature {
-  late IconData iconData;
-  late String title;
-  late String subTitle;
+  IconData iconData;
+  String title;
+  String subTitle;
 
-  Feature({required IconData iconData, required String title, required String subTitle});
+  Feature({required  this.iconData, required this.title, required this.subTitle});
 }

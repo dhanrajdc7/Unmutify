@@ -23,16 +23,19 @@ class _EmojifyViewState extends State<EmojifyView> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(title: Text("Emoji To Speech"),),
-        body: GridView.builder(
-            itemCount: allSections.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: (orientation == Orientation.portrait ? 2 : 4),
-                crossAxisSpacing: 8,
-                mainAxisSpacing: 8
-            ),
-            itemBuilder: (context, index) {
-              return CategoryCell(category: allSections[index],);
-            }
+        body: Container(
+          margin: EdgeInsets.symmetric(horizontal: 8),
+          child: GridView.builder(
+              itemCount: allSections.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: (orientation == Orientation.portrait ? 2 : 4),
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 8
+              ),
+              itemBuilder: (context, index) {
+                return CategoryCell(category: allSections[index],);
+              }
+          ),
         ),
       ),
     );
