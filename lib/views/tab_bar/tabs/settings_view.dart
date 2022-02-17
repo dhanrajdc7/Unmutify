@@ -116,7 +116,7 @@ class _SettingsViewState extends State<SettingsView> {
                     children: [
                       SettingsCell(
                         iconData: Mdi.information,
-                        title: 'About App',
+                        title: 'About',
                         rightObj: Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 20,),
                       ).onTap(() {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => AboutView()),);

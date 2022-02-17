@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tts/flutter_tts.dart';
+import 'package:text_to_speech/text_to_speech.dart';
 import 'package:unmutify/emojis/category.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:unmutify/utils/player_state.dart';
@@ -21,7 +21,7 @@ class DetailEmojiView extends StatefulWidget {
 class _DetailEmojiViewState extends State<DetailEmojiView> {
 
   /// Text to Speech
-  final flutterTts = FlutterTts();
+  TextToSpeech tts = TextToSpeech();
   final String defaultLanguage = 'en-US';
 
   dynamic languages;
@@ -40,70 +40,19 @@ class _DetailEmojiViewState extends State<DetailEmojiView> {
     initTts();
   }
 
+  void initTts() {
+    tts.setLanguage(defaultLanguage);
+    tts.setVolume(volume);
+  }
+
   @override
   void dispose() {
-    flutterTts.stop();
     super.dispose();
+    tts.stop();
   }
 
-  void initTts() {
-    /// Start
-    flutterTts.setStartHandler(() {
-      setState(() {
-        playerState = PlayerState.playing;
-      });
-    });
-
-    flutterTts.setCompletionHandler(() {
-      setState(() {
-        playerState = PlayerState.stopped;
-        hideSnakbar();
-      });
-    });
-
-    flutterTts.setErrorHandler((err) {
-      setState(() {
-        print("error occurred: " + err);
-        showSnakbar("Something went wrong");
-        playerState = PlayerState.stopped;
-        hideSnakbar();
-      });
-    });
-  }
-
-  Future _speak(String txt) async {
-    await flutterTts.setVolume(volume);
-    await flutterTts.setSpeechRate(rate);
-    await flutterTts.setPitch(pitch);
-
-    if (txt.isNotEmpty) {
-      var result = await flutterTts.speak(txt);
-    }
-  }
-
-  void showSnakbar(String msg) {
-    var snackBar = SnackBar(
-      content: Text(
-        msg,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-          fontWeight: FontWeight.w600
-        ),
-      ),
-      behavior: SnackBarBehavior.floating,
-      elevation: 10,
-      backgroundColor: Colors.deepPurpleAccent,
-      onVisible: (){
-        _speak(msg);
-      },
-    );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  }
-
-  void hideSnakbar() {
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+  void speak(String msg) {
+    tts.speak(msg);
   }
 
   @override
@@ -135,8 +84,8 @@ class _DetailEmojiViewState extends State<DetailEmojiView> {
                           shrinkWrap: true,
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: (orientation == Orientation.portrait ? 4 : 6),
-                              crossAxisSpacing: 8,
-                              mainAxisSpacing: 8
+                              crossAxisSpacing: 12,
+                              mainAxisSpacing: 12
                           ),
                           itemBuilder: (context, index) {
                             var emoji = sub.items[index];
@@ -159,5 +108,22 @@ class _DetailEmojiViewState extends State<DetailEmojiView> {
         ),
       ),
     );
+  }
+
+  void showSnakbar(String msg) {
+    var snackBar = SnackBar(
+      content: Text(
+        msg,
+        textAlign: TextAlign.center,
+      ),
+      onVisible: (){
+        speak(msg);
+      },
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  void hideSnakbar() {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
   }
 }

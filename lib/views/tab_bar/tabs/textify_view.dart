@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 import 'package:mdi/mdi.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:flutter_tts/flutter_tts.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:flutter/services.dart';
+import 'package:text_to_speech/text_to_speech.dart';
 import 'package:provider/provider.dart';
 import 'package:unmutify/utils/player_state.dart';
 import 'package:unmutify/utils/themes/theme_provider.dart';
@@ -20,13 +20,11 @@ class TextifyView extends StatefulWidget {
 class _TextifyViewState extends State<TextifyView> {
 
   /// Text to Speech
-  final flutterTts = FlutterTts();
+  // final flutterTts = FlutterTts();
+  TextToSpeech tts = TextToSpeech();
   final String defaultLanguage = 'en-US';
 
-  dynamic languages;
-  late String language;
-
-  double volume = 0.5;
+  double volume = 1.0;
   double pitch = 1.0;
   double rate = 0.5;
 
@@ -36,6 +34,9 @@ class _TextifyViewState extends State<TextifyView> {
 
   /// Player State
   PlayerState playerState = PlayerState.stopped;
+
+  /// TextField State
+  bool clipboardState = true;
 
   /// Shake
   final playShakeKey = GlobalKey<ShakeWidgetState>();
@@ -52,243 +53,151 @@ class _TextifyViewState extends State<TextifyView> {
   void initState() {
     super.initState();
     initTts();
-    _getLanguages();
   }
 
   @override
   void dispose() {
-    flutterTts.stop();
+    tts.stop();
     myController.dispose();
     super.dispose();
   }
 
   void initTts() {
-    /// Start
-    flutterTts.setStartHandler(() {
-      setState(() {
-        playerState = PlayerState.playing;
-      });
-    });
-
-    flutterTts.setCompletionHandler(() {
-      setState(() {
-        playerState = PlayerState.stopped;
-        currentWord = 0;
-        currentValue = 0.0;
-      });
-    });
-
-    flutterTts.setPauseHandler(() {
-      setState(() {
-        playerState = PlayerState.paused;
-      });
-    });
-
-    flutterTts.setCancelHandler(() {
-      setState(() {
-        playerState = PlayerState.stopped;
-        currentWord = 0;
-        currentValue = 0.0;
-      });
-    });
-    
-    flutterTts.setErrorHandler((err) {
-      setState(() {
-        print("error occurred: " + err);
-        showSnakbar("Something went wrong");
-        playerState = PlayerState.stopped;
-        currentWord = 0;
-        currentValue = 0.0;
-      });
-    });
-
-    flutterTts.setProgressHandler((txt, start, end, word) {
-      print("Text: $txt, start: $start, end: $end, word: $word");
-
-      setState(() {
-        currentValue += 1/wordCount;
-      });
-    });
+    tts.setLanguage(defaultLanguage);
+    tts.setVolume(volume);
   }
 
-  Future _getLanguages() async {
-    languages = await flutterTts.getLanguages;
-    print("pretty print $languages");
-    if (languages != null) setState(() => languages);
-  }
-
-  void showSnakbar(String msg) {
-    var snackBar = SnackBar(content: Text(msg));
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  }
-
-  Future _speak() async {
-    await flutterTts.setVolume(volume);
-    await flutterTts.setSpeechRate(rate);
-    await flutterTts.setPitch(pitch);
-
-    if (text.isNotEmpty) {
-      var result = await flutterTts.speak(text);
-      //if (result == 1) setState(() => playerState = PlayerState.playing);
+  void unFocus() {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
     }
-  }
-
-  Future _pause() async {
-
-    if (Platform.isAndroid) {
-      // Pause is NOT supported for Android
-      showSnakbar("Pause Feature is currently not available for Android.");
-    } else {
-      var result = await flutterTts.pause();
-      //if (result == 1) setState(() => playerState = PlayerState.paused);
-    }
-  }
-
-  Future _stop() async {
-    var result = await flutterTts.stop();
-    //if (result == 1) setState(() => playerState = PlayerState.stopped);
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(title: Text("Text to Speech")),
-        body: Container(
-          margin: EdgeInsets.all(16),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                 TextField(
-                   minLines: 5,
-                   maxLines: 10,
-                   controller: myController,
-                   decoration: InputDecoration(
-                     contentPadding: EdgeInsets.all(16),
-                     hintText: 'Type something here',
-                     border: OutlineInputBorder(
-                       borderRadius: BorderRadius.circular(12)
+    return GestureDetector(
+      onTap: () {
+        unFocus();
+      },
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(title: Text("Text to Speech")),
+          body: Container(
+            margin: EdgeInsets.all(16),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                   TextField(
+                     minLines: 5,
+                     maxLines: 10,
+                     controller: myController,
+                     decoration: InputDecoration(
+                       contentPadding: EdgeInsets.all(16),
+                       hintText: 'Type something here',
+                       border: OutlineInputBorder(
+                         borderRadius: BorderRadius.circular(12)
+                       ),
+                       focusColor: Colors.blue,
                      ),
-                     focusColor: Colors.blue,
-                   ),
-                   cursorColor: Colors.blue,
-                   onChanged: (value) {
-                     setState(() {
-                       text = value;
-                       wordCount = text.trim().split(' ').length;
-                     });
-                   },
-                 ).paddingSymmetric(vertical: 16, horizontal: 8),
-                SizedBox(height: 8,),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 4),
-                  child: LinearPercentIndicator(
-                    lineHeight: 20.0,
-                    percent: currentValue,
-                    progressColor: Colors.blue[400],
-                    backgroundColor: Provider.of<ThemeProvider>(context).themeMode == ThemeMode.dark ? Colors.grey.shade800 : Colors.grey.shade300,
-                    barRadius: Radius.circular(12),
-                  ),
-                ),
-                SizedBox(height: 8,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: ShakeWidget(
-                        key: playShakeKey,
-                        shakeCount: 3,
-                        shakeOffset: 5,
-                        shakeDuration: Duration(milliseconds: 500),
-                        child: ControlButton(
-                          title: "Play",
-                          icon: Mdi.play,
-                          clr: Colors.deepPurpleAccent.withOpacity(playerState == PlayerState.playing ? 0.7 : 1.0),
-                          onPressed: (){
-                            if (playerState != PlayerState.playing && text != '') {
-                              _speak();
-                            } else {
-                              playShakeKey.currentState?.shake();
-                            }
-                          },
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: ShakeWidget(
-                        key: pauseShakeKey,
-                        shakeCount: 3,
-                        shakeOffset: 5,
-                        shakeDuration: Duration(milliseconds: 500),
-                        child: ControlButton(
-                          title: "Pause",
-                          icon: Mdi.pause,
-                          clr: Colors.deepOrangeAccent.withOpacity(playerState != PlayerState.playing ? 0.7 : 1.0),
-                          onPressed: (){
-                            if (playerState == PlayerState.playing) {
-                              _pause();
-                            } else {
-                              pauseShakeKey.currentState?.shake();
-                            }
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: ShakeWidget(
-                        key: stopShakeKey,
-                        shakeCount: 3,
-                        shakeOffset: 5,
-                        shakeDuration: Duration(milliseconds: 500),
-                        child: ControlButton(
-                          title: "Stop",
-                          icon: Mdi.stop,
-                          clr: Colors.redAccent.withOpacity(playerState != PlayerState.playing ? 0.7 : 1.0),
-                          onPressed: (){
-                            if (playerState == PlayerState.playing) {
-                              _stop();
-                            } else {
-                              stopShakeKey.currentState?.shake();
-                            }
-                          },
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: ShakeWidget(
-                        key: clearShakeKey,
-                        shakeCount: 3,
-                        shakeOffset: 5,
-                        shakeDuration: Duration(milliseconds: 500),
-                        child: ControlButton(
-                          title: "Clear",
-                          icon: Mdi.close,
-                          clr: Colors.pinkAccent.withOpacity(text == '' ? 0.7 : 1.0),
-                          onPressed: (){
-                            setState(() {
-                              if (text != '') {
-                                myController.text = '';
-                                text = '';
+                     cursorColor: Colors.blue,
+                     onChanged: (value) {
+                       setState(() {
+                         text = value;
+                         wordCount = text.trim().split(' ').length;
+                         if(value == '') {
+                           clipboardState = true;
+                         } else {
+                           clipboardState = false;
+                         }
+                         print("Clipboard State: $clipboardState");
+                       });
+                     },
+                   ).paddingSymmetric(vertical: 16, horizontal: 8),
+                  SizedBox(height: 8,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: ShakeWidget(
+                          key: playShakeKey,
+                          shakeCount: 3,
+                          shakeOffset: 5,
+                          shakeDuration: Duration(milliseconds: 500),
+                          child: ControlButton(
+                            title: "Play",
+                            icon: Mdi.play,
+                            clr: Colors.deepPurpleAccent.withOpacity(playerState == PlayerState.playing ? 0.7 : 1.0),
+                            onPressed: () {
+                              if (myController.text != '') {
+                                unFocus();
+                                tts.speak(myController.text);
+                                showSnakbar("Speaking");
                               } else {
-                                clearShakeKey.currentState?.shake();
+                                showSnakbar("No Content");
                               }
-                            });
-                          },
+                            },
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                )
-              ],
+                      Expanded(
+                        child: ShakeWidget(
+                          key: pauseShakeKey,
+                          shakeCount: 3,
+                          shakeOffset: 5,
+                          shakeDuration: Duration(milliseconds: 500),
+                          child: ControlButton(
+                            title: clipboardState ? "Paste" : "Clear",
+                            icon: clipboardState ? Mdi.contentCopy : Mdi.close,
+                            clr: clipboardState ? Colors.green : Colors.redAccent,
+                            onPressed: () async {
+                              ClipboardData? cdata = await Clipboard.getData(Clipboard.kTextPlain);
+                              print("clipboard state: $clipboardState");
+                              if(clipboardState) {
+                                if(cdata?.text != null && cdata?.text != "") {
+                                  setState(() {
+                                    myController.text = cdata?.text ?? "";
+                                    clipboardState = false;
+                                  });
+                                  showSnakbar("Text Pasted");
+                                } else {
+                                  showSnakbar("Empty Text");
+                                }
+                              } else {
+                                if (myController.text != '') {
+                                  setState(() {
+                                    myController.text = '';
+                                    text = '';
+                                    clipboardState = true;
+                                    unFocus();
+                                  });
+                                  showSnakbar("Text Cleared");
+                                } else {
+                                  clearShakeKey.currentState?.shake();
+                                }
+                              }
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
+  }
+
+  void showSnakbar(String msg) {
+    var snackBar = SnackBar(
+      content: Text(
+        msg,
+        textAlign: TextAlign.center,
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

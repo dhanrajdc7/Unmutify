@@ -17,8 +17,7 @@ class CategoryCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(16),
-      padding: EdgeInsets.all(16),
+      margin: EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Provider.of<ThemeProvider>(context).themeMode == ThemeMode.dark ? Colors.black : Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -40,10 +39,10 @@ class CategoryCell extends StatelessWidget {
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
-            ),
+            )
           )
         ],
-      ).paddingSymmetric(vertical: 4),
+      ).paddingSymmetric(vertical: 8),
     ).onTap((){
       Navigator.push(context, MaterialPageRoute(builder: (context) => DetailEmojiView(category: category)),);
     });

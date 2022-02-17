@@ -28,9 +28,9 @@ class _EmojifyViewState extends State<EmojifyView> {
           child: GridView.builder(
               itemCount: allSections.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: (orientation == Orientation.portrait ? 2 : 4),
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 8
+                crossAxisCount: (orientation == Orientation.portrait ? 2 : 4),
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
               ),
               itemBuilder: (context, index) {
                 return CategoryCell(category: allSections[index],);

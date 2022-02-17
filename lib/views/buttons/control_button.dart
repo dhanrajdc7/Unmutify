@@ -29,7 +29,7 @@ class ControlButton extends StatelessWidget {
         children: [
           Expanded(
             flex: 2,
-            child: Icon(icon, size: 32, color: Colors.white,),
+            child: Icon(icon, size: 24, color: Colors.white,),
           ),
           Expanded(
             flex: 6,

@@ -124,7 +124,7 @@ class _DrawifyViewState extends State<DrawifyView> {
 
   Widget buildStrokeToolbar() {
     return Positioned(
-      bottom: 100.0,
+      bottom: 15.0,
       right: 10.0,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -167,9 +167,6 @@ class _DrawifyViewState extends State<DrawifyView> {
           buildClearButton(),
           Divider(
             height: 10.0,
-          ),
-          Divider(
-            height: 20.0,
           ),
           buildColorButton(Colors.red),
           buildColorButton(Colors.blueAccent),

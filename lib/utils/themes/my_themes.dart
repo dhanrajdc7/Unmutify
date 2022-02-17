@@ -21,6 +21,16 @@ class MyThemes {
           borderRadius: BorderRadius.all(Radius.circular(12))
       )
     ),
+    snackBarTheme: SnackBarThemeData(
+      contentTextStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+          fontWeight: FontWeight.w600
+      ),
+      behavior: SnackBarBehavior.floating,
+      elevation: 10,
+      backgroundColor: Colors.deepPurpleAccent,
+    )
   );
 
   static final darkTheme = ThemeData(
@@ -42,6 +52,16 @@ class MyThemes {
           borderRadius: BorderRadius.all(Radius.circular(12))
       )
     ),
+    snackBarTheme: SnackBarThemeData(
+      contentTextStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+          fontWeight: FontWeight.w600
+      ),
+      behavior: SnackBarBehavior.floating,
+      elevation: 10,
+      backgroundColor: Colors.deepPurpleAccent,
+    )
   );
 
 }
