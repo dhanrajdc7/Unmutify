@@ -17,7 +17,7 @@ class _FeaturesViewState extends State<FeaturesView> {
   final List<Feature> allFeatures = [
     Feature(iconData: Mdi.stickerEmoji, title: "Emojify", subTitle: "Interact with 1000+ emojis"),
     Feature(iconData: Mdi.textToSpeech, title: "Textify", subTitle: "Convert your text into audio words"),
-    Feature(iconData: Mdi.draw, title: "Drawify", subTitle: "Draw on canvas easily"),
+    Feature(iconData: Mdi.draw, title: "Drawify", subTitle: "Draw your thoughts on canvas"),
     Feature(iconData: Mdi.currencyUsdOff, title: "Free", subTitle: "Open Source & free to use"),
   ];
 
@@ -27,7 +27,6 @@ class _FeaturesViewState extends State<FeaturesView> {
       child: Scaffold(
         appBar: AppBar(title: Text('Features'),),
         body: Container(
-
           child: SingleChildScrollView(
             child: Column(
               children: [

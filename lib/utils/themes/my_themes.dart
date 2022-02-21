@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MyThemes {
 
@@ -8,10 +9,16 @@ class MyThemes {
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.white,
       centerTitle: true,
+      iconTheme: IconThemeData(
+          color: Colors.black
+      ),
       titleTextStyle: TextStyle(
           color: Colors.black,
           fontSize: 24,
           fontWeight: FontWeight.bold
+      ),
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarColor: Colors.white,
       )
     ),
     cardTheme: CardTheme(
@@ -43,6 +50,12 @@ class MyThemes {
           color: Colors.white,
           fontSize: 24,
           fontWeight: FontWeight.bold
+        ),
+        iconTheme: IconThemeData(
+          color: Colors.white
+        ),
+        systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Colors.black
         )
     ),
     cardTheme: CardTheme(
